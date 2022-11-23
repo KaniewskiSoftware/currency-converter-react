@@ -4,8 +4,8 @@ import { currencies } from "../currencies/currencies";
 
 const Form = ({ getResult, getRate }) => {
   const [amount, setAmount] = useState("");
-  const [startCurrency, setStartCurrency] = useState("PLN");
-  const [endCurrency, setEndCurrency] = useState("PLN");
+  const [startCurrency, setStartCurrency] = useState(currencies[0].symbol);
+  const [endCurrency, setEndCurrency] = useState(currencies[0].symbol);
   const ref = useRef();
 
   useEffect(() => {
@@ -33,12 +33,12 @@ const Form = ({ getResult, getRate }) => {
             <input
               ref={ref}
               value={amount}
+              onChange={({ target }) => setAmount(target.value)}
               className="calculator__input"
               type="number"
               name="amount"
               min="0"
               step="any"
-              onChange={({ target }) => setAmount(target.value)}
             />
           </label>
         </p>
