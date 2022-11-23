@@ -21,17 +21,17 @@ function App() {
     }));
   };
   const getRate = (currencies, startCurrency, endCurrency) => {
-    if (startCurrency !== endCurrency) {
-      return currencies.filter(
-        (currencies) => currencies.symbol === startCurrency
-      )[0][`rate${endCurrency}`];
+    if (startCurrency === endCurrency) {
+      return 1;
     }
-    return 1;
+    return currencies.filter(
+      (currencies) => currencies.symbol === startCurrency
+    )[0][`rate${endCurrency}`];
   };
 
   return (
     <Container>
-      <Form getResult={getResult} getRate={getRate}/>
+      <Form getResult={getResult} getRate={getRate} />
       <Result result={result} />
     </Container>
   );
