@@ -1,6 +1,6 @@
 .container {
-    max-width: 900px;
-    margin: 0 auto;
+    flex-basis: 900px;
+    margin: 20px;
     padding: 20px;
     background-color: rgb(114, 113, 113);
     letter-spacing: 1px;
