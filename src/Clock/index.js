@@ -8,6 +8,7 @@ const Clock = () => {
     const intervalId = setInterval(() => {
       setTheDate(new Date());
     }, 1000);
+
     return () => {
       clearInterval(intervalId);
     };
@@ -24,11 +25,7 @@ const Clock = () => {
       </span>
       {","}&nbsp;
       <span>
-        {theDate.toLocaleTimeString("pl", {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        })}
+        {theDate.toLocaleTimeString()}
       </span>
     </header>
   );
