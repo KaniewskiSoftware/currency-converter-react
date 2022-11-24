@@ -15,17 +15,21 @@ const Clock = () => {
 
   return (
     <header className="header">
-      <p className="header__clock">
+      <span>
         Dzisiaj jest {theDate.toLocaleDateString("pl", { weekday: "long" })}
-        {", "}
+      </span>
+      {","}&nbsp;
+      <span>
         {theDate.toLocaleDateString("pl", { day: "numeric", month: "long" })}
-        {", "}
-        {theDate.toLocaleDateString("pl", {
+      </span>
+      {","}&nbsp;
+      <span>
+        {theDate.toLocaleTimeString("pl", {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
         })}
-      </p>
+      </span>
     </header>
   );
 };
