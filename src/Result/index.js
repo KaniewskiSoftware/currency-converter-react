@@ -1,15 +1,19 @@
-import "./style.css";
+import { Section, Span } from "./styled";
 
 const Result = ({ result }) => {
   return (
-    <section className="result">
-      <p className="result__text">
+    <Section>
+      <Span as="p">
         Wynik: <br />
-        <span className="result__text">
-          {result.value ? `${result.value} ${result.startCurrency} = ${result.value * result.rate.toFixed(2)} ${result.endCurrency}` : ``}
-        </span>
-      </p>
-    </section>
+        <Span>
+          {result.value
+            ? `${result.value} ${result.startCurrency} = ${
+                result.value * result.rate.toFixed(2)
+              } ${result.endCurrency}`
+            : ``}
+        </Span>
+      </Span>
+    </Section>
   );
 };
 
