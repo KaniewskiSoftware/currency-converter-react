@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { Calculator, Fieldset, Legend, Span, Input } from "./styled";
-
 import { currencies } from "../currencies/currencies";
 
 const Form = ({ getResult, getRate }) => {
