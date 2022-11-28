@@ -1,9 +1,9 @@
 import { Header } from "./styled";
 import { useCurrentDate } from "./useCurrentDate"
 
-const formatDate = (theDate) =>
+const formatDate = (date) =>
 
-  theDate.toLocaleString(undefined, {
+  date.toLocaleString(undefined, {
     weekday: "long",
     hour: "2-digit",
     minute: "2-digit",
@@ -13,13 +13,13 @@ const formatDate = (theDate) =>
   });
 
 const Clock = () => {
-const theDate = useCurrentDate();
+const date = useCurrentDate();
 
   return (
     <Header>
       Dzisiaj jest
       {" "}
-      {formatDate(theDate)}
+      {formatDate(date)}
     </Header>
   );
 };
