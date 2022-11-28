@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Section = styled.section`
   margin-top: 10px;
   width: 100%;
-  background-color: rgb(143, 142, 142);
+  background-color: ${({theme}) => theme.color.osloGrey};
   text-align: center;
-  border: 2px solid #212529;
+  border: 2px solid ${({theme}) => theme.color.dark};
   border-radius: 10px;
   letter-spacing: 1px;
 `;
