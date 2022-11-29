@@ -3,6 +3,7 @@ import Container from "./Container";
 import Form from "./Form";
 import Result from "./Result";
 import Clock from "./Clock";
+import { useAPI } from "./handleAPI";
 
 function App() {
   const [result, setResult] = useState({
@@ -11,6 +12,10 @@ function App() {
     value: "",
     rate: 1,
   });
+
+  const {rates, status} = useAPI();
+  console.log(rates);
+  console.log(status);
 
   const getResult = (startCurrency, endCurrency, value, rate) => {
     setResult((result) => ({
