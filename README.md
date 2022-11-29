@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Preview
 
-![gif shows how the converter works](public/animation4.gif)
+![gif shows how the converter works](animation5.gif)
 
 ## Demo
 
