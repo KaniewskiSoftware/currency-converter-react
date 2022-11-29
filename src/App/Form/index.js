@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { Calculator, Fieldset, Legend, Span, Input } from "./styled";
-import { currencies } from "../currencies/currencies";
+import { currencies } from "../../currencies/currencies";
+// import { useAPI } from "./useAPI";
 
 const Form = ({ getResult, getRate }) => {
+  // const {rates, status, date} = useAPI();
   const [amount, setAmount] = useState("");
   const [startCurrency, setStartCurrency] = useState(currencies[0].symbol);
   const [endCurrency, setEndCurrency] = useState(currencies[1].symbol);
