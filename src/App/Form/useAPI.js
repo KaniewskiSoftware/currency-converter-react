@@ -9,8 +9,7 @@ export const useAPI = () => {
 
   useEffect(() => {
     const getData = () => {
-      const response = axios.get(url);
-      response
+      axios.get(url)
         .then((response) => {
           setRates(response.data.rates);
           setDate(response.data.date);
