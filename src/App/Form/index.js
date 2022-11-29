@@ -9,13 +9,8 @@ const Form = () => {
   const [amount, setAmount] = useState("");
   const [startCurrency, setStartCurrency] = useState("PLN");
   const [endCurrency, setEndCurrency] = useState("USD");
+  const [result, setResult] = useState({});
   const ref = useRef();
-  const [result, setResult] = useState({
-    startCurrency: "PLN",
-    endCurrency: "PLN",
-    value: "",
-    rate: 1,
-  });
 
   useEffect(() => {
     if (ref.current) {
