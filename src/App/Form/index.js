@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import Result from "./Result";
 import { Calculator, Fieldset, Legend, Span, Input } from "./styled";
-// import { useAPI } from "./useAPI";
-import { rates, status, date } from "./API";
+import { useAPI } from "./useAPI";
 
 const Form = () => {
-  // const {rates, status, date} = useAPI();
+  const {rates, status, date} = useAPI();
   const [amount, setAmount] = useState("");
   const [startCurrency, setStartCurrency] = useState("PLN");
   const [endCurrency, setEndCurrency] = useState("USD");
