@@ -2,17 +2,29 @@ import { useState, useRef, useEffect } from "react";
 import { Calculator, Fieldset, Legend, Span, Input } from "./styled";
 import { currencies } from "../../currencies/currencies";
 // import { useAPI } from "./useAPI";
+import {rates,status,date} from "./API"
 
-const Form = ({ getResult, getRate }) => {
+const Form = ({ getResult}) => {
   // const {rates, status, date} = useAPI();
   const [amount, setAmount] = useState("");
-  const [startCurrency, setStartCurrency] = useState(currencies[0].symbol);
-  const [endCurrency, setEndCurrency] = useState(currencies[1].symbol);
+  const [startCurrency, setStartCurrency] = useState("PLN");
+  const [endCurrency, setEndCurrency] = useState("USD");
   const ref = useRef();
 
   useEffect(() => {
     ref.current.focus();
   }, []);
+  // console.log(rates[`${startCurrency}`])
+  const getRate = (rates, startCurrency, endCurrency) => {
+    if (startCurrency === endCurrency) {
+      return 1;
+    }
+    else if (startCurrency === "PLN") {
+      return rates[`${endCurrency}`]
+    }
+
+    return ((1/rates[`${startCurrency}`])*rates[`${endCurrency}`])
+  };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +32,7 @@ const Form = ({ getResult, getRate }) => {
       startCurrency,
       endCurrency,
       amount,
-      getRate(currencies, startCurrency, endCurrency)
+      getRate(rates, startCurrency, endCurrency)
     );
     ref.current.focus();
   };
@@ -52,11 +64,11 @@ const Form = ({ getResult, getRate }) => {
               onChange={({ target }) => setStartCurrency(target.value)}
               name="startCurrency"
             >
-              {currencies.map(({ id, symbol }) => (
-                <option key={id} value={symbol}>
+              {Object.keys(rates).map((symbol => (
+                <option key={symbol} value={symbol}>
                   {symbol}
                 </option>
-              ))}
+              )))}
             </Input>
           </label>
         </p>
@@ -69,11 +81,11 @@ const Form = ({ getResult, getRate }) => {
               onChange={({ target }) => setEndCurrency(target.value)}
               name="endCurrency"
             >
-              {currencies.map(({ id, symbol }) => (
-                <option key={id} value={symbol}>
+              {Object.keys(rates).map((symbol => (
+                <option key={symbol} value={symbol}>
                   {symbol}
                 </option>
-              ))}
+              )))}
             </Input>
           </label>
         </p>
