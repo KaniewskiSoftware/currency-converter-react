@@ -25,6 +25,7 @@ export const Span = styled.span`
 
   ${({info}) => info && css`
   font-size: 12px;
+  padding: 10px 0 0;
   `}
 `;
 
