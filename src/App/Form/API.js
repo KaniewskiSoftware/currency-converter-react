@@ -171,4 +171,4 @@ export const rates = {
 }
 
 export const status = 'success';
-export const data = '2022-11-29';
+export const date = '2022-11-29';

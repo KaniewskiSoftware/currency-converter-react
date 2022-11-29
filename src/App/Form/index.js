@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import Result  from "./Result";
+import Result from "./Result";
 import { Calculator, Fieldset, Legend, Span, Input } from "./styled";
-import { currencies } from "../../currencies/currencies";
 // import { useAPI } from "./useAPI";
 import { rates, status, date } from "./API";
 
@@ -18,6 +17,14 @@ const Form = () => {
     rate: 1,
   });
 
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.focus();
+    }
+
+    return;
+  }, []);
+
   const getResult = (startCurrency, endCurrency, value, rate) => {
     setResult((result) => ({
       ...result,
@@ -28,14 +35,13 @@ const Form = () => {
     }));
   };
 
-  useEffect(() => {
-    ref.current.focus();
-  }, []);
   const getRate = (rates, startCurrency, endCurrency) => {
+    if (startCurrency === "PLN") {
+      return rates[`${endCurrency}`];
+    }
+
     if (startCurrency === endCurrency) {
       return 1;
-    } else if (startCurrency === "PLN") {
-      return rates[`${endCurrency}`];
     }
 
     return (1 / rates[`${startCurrency}`]) * rates[`${endCurrency}`];
@@ -51,7 +57,30 @@ const Form = () => {
     );
     ref.current.focus();
   };
+  if (status === "pending") {
+    return (
+      <>
+        <Legend>Kalkulator Walut</Legend>
+        <Input as="p">
+          Sekundka <br/>
+          Ładuję kursy walut z exchangerate.host... 😎
+        </Input>
+      </>
+    );
+  }
 
+  if (status === "error") {
+    return (
+      <>
+        <Legend>Kalkulator Walut</Legend>
+        <Input as="p" error>
+          Hmmm... Coś poszło nie tak 🤯 Sprawdź czy masz połączenie z internetem.<br/>
+          Jeśli masz... to wygląda na to, że to nasza wina. Może spróbuj później? 😜
+        </Input>
+      </>
+    );
+  }
+  if (status === "success")
   return (
     <>
       <Calculator onSubmit={onFormSubmit}>
@@ -109,6 +138,12 @@ const Form = () => {
             <Input as="button" special>
               Przelicz
             </Input>
+          </p>
+          <p>
+            <Span info>
+              Kursy walut pobierane są z exchangerate.host<br/>
+              Aktualne na dzień: {date}
+            </Span>
           </p>
         </Fieldset>
       </Calculator>
