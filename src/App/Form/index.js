@@ -106,9 +106,9 @@ const Form = () => {
                   onChange={({ target }) => setStartCurrency(target.value)}
                   name="startCurrency"
                 >
-                  {Object.keys(rates).map((symbol) => (
-                    <option key={symbol} value={symbol}>
-                      {symbol}
+                  {Object.keys(rates).map((currency) => (
+                    <option key={currency} value={currency}>
+                      {currency}
                     </option>
                   ))}
                 </Input>
@@ -123,9 +123,9 @@ const Form = () => {
                   onChange={({ target }) => setEndCurrency(target.value)}
                   name="endCurrency"
                 >
-                  {Object.keys(rates).map((symbol) => (
-                    <option key={symbol} value={symbol}>
-                      {symbol}
+                  {Object.keys(rates).map((currency) => (
+                    <option key={currency} value={currency}>
+                      {currency}
                     </option>
                   ))}
                 </Input>
