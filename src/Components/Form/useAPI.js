@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+const URL = "https://api.exchangerate.host/latest?base=PLN";
+
 export const useAPI = () => {
   const [rates, setRates] = useState();
   const [date, setDate] = useState();
   const [status, setStatus] = useState("pending");
-  const url = "https://api.exchangerate.host/latest?base=PLN";
 
   useEffect(() => {
     const getData = () => {
-      axios.get(url)
+      axios
+        .get(URL)
         .then((response) => {
           setRates(response.data.rates);
           setDate(response.data.date);
@@ -20,6 +22,7 @@ export const useAPI = () => {
           setStatus("error");
         });
     };
+
     setTimeout(getData, 2000);
   }, []);
   return { rates, status, date };
