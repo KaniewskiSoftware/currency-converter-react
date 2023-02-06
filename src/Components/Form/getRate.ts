@@ -1,4 +1,4 @@
-export const getRate = (rates, startCurrency, endCurrency) => {
+export const getRate = (rates, startCurrency:string, endCurrency:string) => {
     if (startCurrency === "PLN") {
       return rates[endCurrency];
     }
