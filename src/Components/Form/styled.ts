@@ -19,7 +19,7 @@ export const Legend = styled.legend`
   font-size: 24px;
 `;
 
-export const Span = styled.span`
+export const Span = styled.span<{info?: boolean}>`
   display: inline-block;
   padding: 0 0 10px;
 
@@ -29,7 +29,7 @@ export const Span = styled.span`
   `}
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{error?: boolean, special?: boolean}>`
   width: 100%;
   padding: 10px 0;
   text-align: center;
