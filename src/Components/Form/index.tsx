@@ -4,18 +4,23 @@ import {Calculator, Fieldset, Legend, Span, Input} from "./styled";
 import {useAPI} from "./useAPI";
 import {getRate} from "./getRate";
 
-type ResultType = {
+export type ResultType = {
     startCurrency: string,
     endCurrency: string,
-    value: number,
-    rate: number,
+    value: number | 0,
+    rate: number | null,
 }
 const Form = () => {
     const {rates, status, date} = useAPI();
-    const [value, setValue] = useState<number>(+"");
+    const [value, setValue] = useState<number>(0);
     const [startCurrency, setStartCurrency] = useState<string>("PLN");
     const [endCurrency, setEndCurrency] = useState<string>("USD");
-    const [result, setResult] = useState<ResultType | {}>({});
+    const [result, setResult] = useState<ResultType>({
+        startCurrency: startCurrency,
+        endCurrency: endCurrency,
+        value: 0,
+        rate: null
+    });
     const inputRef = useRef<HTMLInputElement>(null);
 
     const getResult = ({startCurrency, endCurrency, value, rate}: ResultType) => {
