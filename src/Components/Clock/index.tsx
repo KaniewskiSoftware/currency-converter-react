@@ -1,7 +1,7 @@
 import { Header } from "./styled";
 import { useCurrentDate } from "./useCurrentDate"
 
-const formatDate = (date) =>
+const formatDate = (date: Date) =>
 
   date.toLocaleString(undefined, {
     weekday: "long",
