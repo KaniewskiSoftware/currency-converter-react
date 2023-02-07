@@ -7,12 +7,12 @@ import {getRate} from "./getRate";
 export type ResultType = {
     startCurrency: string,
     endCurrency: string,
-    value: number | 0,
+    value: number | string,
     rate: number | null,
 }
 const Form = () => {
     const {rates, status, date} = useAPI();
-    const [value, setValue] = useState<number>(0);
+    const [value, setValue] = useState<string>("");
     const [startCurrency, setStartCurrency] = useState<string>("PLN");
     const [endCurrency, setEndCurrency] = useState<string>("USD");
     const [result, setResult] = useState<ResultType>({
@@ -88,7 +88,7 @@ const Form = () => {
                                 autoFocus
                                 ref={inputRef}
                                 value={value}
-                                onChange={({target}) => setValue(+target.value)}
+                                onChange={({target}) => setValue(target.value)}
                                 type="number"
                                 name="amount"
                                 min="0"

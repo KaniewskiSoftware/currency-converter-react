@@ -11,7 +11,7 @@ const Result = ({result}: ResultProps) => (
             <Span>
                 {(result.value && result.rate)
                     ? `${result.value} ${result.startCurrency} = ${
-                        result.value * +result.rate.toFixed(2)
+                        +result.value * +result.rate.toFixed(2)
                     } ${result.endCurrency}`
                     : ``}
             </Span>
