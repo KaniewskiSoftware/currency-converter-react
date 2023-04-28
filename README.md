@@ -1,4 +1,4 @@
-# Currency Converter React
+# [Currency Converter React](https://kaniewskisoftware.github.io/currency-converter-react/)
 
 Simple currency converter. Allows to convert between PLN, CHF, USD and EUR.
 
